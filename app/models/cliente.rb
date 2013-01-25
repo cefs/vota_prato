@@ -1,5 +1,7 @@
 #encoding: utf-8
 class Cliente < ActiveRecord::Base
+	  has_many :qualificacoes
+
 	attr_accessible :nome, :idade
 
 	validates_presence_of :nome,	message: "- deve ser preenchido"
