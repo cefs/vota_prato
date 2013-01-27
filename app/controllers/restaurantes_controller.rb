@@ -38,7 +38,6 @@ class RestaurantesController < ApplicationController
 	def destroy
 		@restaurante = Restaurante.find(params[:id])
 		@restaurante.destroy
-
 		redirect_to(action: "index")
 	end
 
