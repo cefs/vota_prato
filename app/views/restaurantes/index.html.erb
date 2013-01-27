@@ -1,7 +1,6 @@
+<%=render "titulo" %>
+
 <h1>Listing restaurantes</h1>
-
-<%=params[:nome]%>
-
 <table>
   <tr>
     <th>Nome</th>
@@ -19,7 +18,6 @@
     <td><%= restaurante.especialidade %></td>
     <td><%= link_to 'Show', restaurante %></td>
     <td><%= link_to 'Edit', edit_restaurante_path(restaurante) %></td>
-    <td><%= link_to 'Destroy', restaurante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

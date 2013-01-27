@@ -1,11 +1,14 @@
 VotaPrato::Application.routes.draw do
-
-	match 'rack',
-	:to => proc{|env| [200, {"Content-type" => "text/html"},
-		["App Rack em uma rota Rails"]]}
-
-
+	#Resources
+	resources :clientes
+	resources :qualificacoes
 	resources :restaurantes
 
-	match "inicio(/:nome)" => "restaurantes#index"
+	#Testando rack dentro de aplicação rails
+	#match 'rack',
+	#:to => proc{|env| [200, {"Content-type" => "text/html"},
+	#	["App Rack em uma rota Rails"]]}
+
+	#Match
+	match "inicio" => "restaurantes#index"
 end

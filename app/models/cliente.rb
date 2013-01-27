@@ -1,6 +1,6 @@
 #encoding: utf-8
 class Cliente < ActiveRecord::Base
-	  has_many :qualificacoes
+	has_many :qualificacoes
 
 	attr_accessible :nome, :idade
 
