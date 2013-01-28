@@ -11,4 +11,6 @@ VotaPrato::Application.routes.draw do
 
 	#Match
 	match "inicio" => "restaurantes#index"
+
+	root :to => "restaurantes#index"
 end
