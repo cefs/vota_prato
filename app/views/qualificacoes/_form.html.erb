@@ -13,11 +13,15 @@
 
   <div class="field">
     <%= f.label :cliente_id %><br />
-    <%= f.number_field :cliente_id %>
+    <%= collection_select :qualificacao, :cliente_id,
+    Cliente.order(:nome),
+    :id,:nome,{:prompt => true} %>
   </div>
   <div class="field">
     <%= f.label :restaurante_id %><br />
-    <%= f.number_field :restaurante_id %>
+    <%=collection_select :qualificacao, :restaurante_id,
+    Restaurante.order(:nome),
+    :id,:nome,{:prompt =>true} %>
   </div>
   <div class="field">
     <%= f.label :nota %><br />

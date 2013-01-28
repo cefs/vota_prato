@@ -17,6 +17,10 @@
   <%= @restaurante.especialidade %>
 </p>
 
+<%= link_to 'Nova Qualificação', :controller => "qualificacoes",
+								 :action => "new",
+								 :restaurante => @restaurante %>
+
 
 <%= link_to 'Edit', edit_restaurante_path(@restaurante) %> |
 <%= link_to 'Back', restaurantes_path %>
