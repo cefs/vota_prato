@@ -3,7 +3,8 @@ class QualificacoesController < ApplicationController
   respond_to :html,:xml
 
   def index
-    @qualificacoes = Qualificacao.all
+    @qualificacoes = Qualificacao.includes(:cliente).order('clientes.nome')
+
     respond_with @qualificacoes
   end
 
