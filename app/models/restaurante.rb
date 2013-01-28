@@ -1,10 +1,13 @@
 #encoding: utf-8
 class Restaurante < ActiveRecord::Base
+#associations  
       has_many :qualificacoes
       has_and_belongs_to_many :pratos
-
+      has_many :comentarios, :as => :comentavel
+#mass assingment
   attr_accessible :nome, :endereco, :especialidade
 
+#validations
   validates_presence_of :nome, message: "deve ser preenchido"
   validates_presence_of :endereco, message: "deve ser preenchido"
   validates_presence_of :especialidade, message: "deve ser preenchido"
