@@ -1,30 +1,18 @@
 class QualificacoesController < ApplicationController
-  # GET /qualificacoes
-  # GET /qualificacoes.json
+
+  respond_to :html,:xml
+
   def index
     @qualificacoes = Qualificacao.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @qualificacoes }
-    end
+    respond_with @qualificacoes
   end
 
-  # GET /qualificacoes/1
-  # GET /qualificacoes/1.json
   def show
     @qualificacao = Qualificacao.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @qualificacao }
-    end
+    respond_with @qualificacao
   end
 
-  # GET /qualificacoes/new
-  # GET /qualificacoes/new.json
   def new
-
     @qualificacao = Qualificacao.new
 
     if params[:cliente]
@@ -34,16 +22,12 @@ class QualificacoesController < ApplicationController
     if params[:restaurante]
       @qualificacao.restaurante = Restaurante.find(params[:restaurante])
     end
-
   end
 
-  # GET /qualificacoes/1/edit
   def edit
     @qualificacao = Qualificacao.find(params[:id])
   end
 
-  # POST /qualificacoes
-  # POST /qualificacoes.json
   def create
     @qualificacao = Qualificacao.new(params[:qualificacao])
 
@@ -58,8 +42,6 @@ class QualificacoesController < ApplicationController
     end
   end
 
-  # PUT /qualificacoes/1
-  # PUT /qualificacoes/1.json
   def update
     @qualificacao = Qualificacao.find(params[:id])
 
@@ -74,8 +56,6 @@ class QualificacoesController < ApplicationController
     end
   end
 
-  # DELETE /qualificacoes/1
-  # DELETE /qualificacoes/1.json
   def destroy
     @qualificacao = Qualificacao.find(params[:id])
     @qualificacao.destroy

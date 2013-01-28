@@ -1,29 +1,20 @@
 class ClientesController < ApplicationController
+
+  respond_to :html, :xml
+
   def index
     @clientes = Cliente.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @clientes }
-    end
+    respond_with @clientes
   end
 
   def show
     @cliente = Cliente.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @cliente }
-    end
+    respond_with @cliente
   end
 
   def new
     @cliente = Cliente.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @cliente }
-    end
+    respond_with @cliente
   end
 
   def edit
