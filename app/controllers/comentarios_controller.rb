@@ -76,8 +76,8 @@ class ComentariosController < ApplicationController
     @comentario.destroy
 
     respond_to do |format|
-      format.html { redirect_to comentarios_url }
-      format.json { head :no_content }
+      format.xml { head :ok }
+      format.js  { head :ok }
     end
   end
 end

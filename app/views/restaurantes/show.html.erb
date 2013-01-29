@@ -22,7 +22,6 @@
 </fieldset>
 
 
-
 <p>
   <b>Nome:</b>
   <%= @restaurante.nome %>
@@ -37,6 +36,10 @@
   <b>Especialidade:</b>
   <%= @restaurante.especialidade %>
 </p>
+
+
+<%= comentarios @restaurante %>
+
 
 <%= link_to 'Nova Qualificação', :controller => "qualificacoes",
 								 :action => "new",
