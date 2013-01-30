@@ -21,7 +21,11 @@
 </p>
 
 
-<%= comentarios @qualificacao %>
+<% unless @qualificacao.comentarios.empty? %>
+	<%= comentarios @qualificacao %>	
+<% end %>
+
+<%= novo_comentario(@qualificacao)%>
 
 <%= link_to 'Edit', edit_qualificacao_path(@qualificacao) %> |
 <%= link_to 'Back', qualificacoes_path %>

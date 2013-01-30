@@ -1,4 +1,11 @@
 module ApplicationHelper
+
+	def novo_comentario(comentavel)
+		form_novo_comentario = render partial: "comentarios/novo_comentario",
+											   locals: {comentavel: comentavel}
+		raw form_novo_comentario
+	end
+
 	def comentarios(comentavel)
 		comentarios = "<div id='comentarios'>"
 			comentarios << "<h3>Comentarios</h3>"

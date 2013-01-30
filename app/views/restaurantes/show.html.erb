@@ -37,8 +37,11 @@
   <%= @restaurante.especialidade %>
 </p>
 
+<% unless @restaurante.comentarios.empty? %>
+	<%= comentarios @restaurante %>	
+<% end %>
 
-<%= comentarios @restaurante %>
+<%= novo_comentario(@restaurante)%>
 
 
 <%= link_to 'Nova Qualificação', :controller => "qualificacoes",
