@@ -1,1 +1,14 @@
-<%=render :partial => "comentarios/comentario", :collection => @comentario.comentavel.comentarios %>
+<%=render @comentario.comentavel.comentarios %>
+
+
+<script>
+	var erros = "";
+	<% @comentario.errors.full_messages.each do |m| %>
+		erros += " :: <%= m %>";
+	<% end %>
+
+	if (erros != "") {
+		alert(erros);	
+	}
+
+</script>

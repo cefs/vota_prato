@@ -1,6 +1,6 @@
 <%- model_class = Qualificacao -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1> Qualificação </h1>
 </div>
 
   <div class="row">
@@ -20,7 +20,6 @@
     </div>
 
     <div class="span6">
-
       <div class="span3">
         <div class="well">
           <small>com a nota:</small>
@@ -34,9 +33,10 @@
           <b><%= valor_formatado @qualificacao.valor_gasto.round %></b>
         </div>
       </div>
-
     </div>
   </div>
+
+
 
 <% unless @qualificacao.comentarios.empty? %>
   <%= comentarios @qualificacao %>

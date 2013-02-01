@@ -1,8 +1,10 @@
 <p id="comentario_<%= comentario.id %>" class="alert alert-info">
 	<%= comentario.conteudo %> -
-	<%= link_to '(remover)', comentario, :method => :delete,
+	<%= link_to 'remover', comentario, :method => :delete,
 										 :remote => true,
-										 :id	 => "remove_comentario_#{comentario.id}" %>
+										 :id	 => "remove_comentario_#{comentario.id}",
+										 :class  => "btn btn-mini btn-danger" %>
+
 </p>
 
 <%= content_for :js do %>

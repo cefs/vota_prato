@@ -44,12 +44,9 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
-        format.xml { render :xml => @comentario, :status => :created, :location => @comentario }
-        format.js 
-      else
-        format.html { render action: "new" }
-        format.json { render json: @comentario.errors, status: :unprocessable_entity }
-        format.js   { head :ok}
+        format.js { render "create", status: 200 }
+      else        
+        format.js { render "create", status: 400 }
       end
     end
   end
