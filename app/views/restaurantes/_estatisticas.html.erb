@@ -3,7 +3,7 @@
       <div class="well">
       	<b>Nota Média:</b>
       	<span class="label">
-			     <%=@restaurante.qualificacoes.average(:nota) %>
+			     <%=@restaurante.valida_nota_media %>
 		    </span>
       </div>
     </div>
@@ -12,7 +12,7 @@
       <div class="well">
       	<b>Qualificações:</b>
         <span class="label">
-        <%=@restaurante.qualificacoes.count %>
+          <%=@restaurante.qualificacoes.count %>
         </span>
       </div>  
     </div>
@@ -21,9 +21,8 @@
       <div class="well">
       	 <b>Preço médio:</b>
           <span class="label">
-            <%=  valor_formatado(@restaurante.qualificacoes.average(:valor_gasto)) %>
+          <%= valor_formatado(@restaurante.valida_media_valor_gasto) %>
           </span>
       </div>
     </div>
-
 </div>

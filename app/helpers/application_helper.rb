@@ -23,7 +23,7 @@ module ApplicationHelper
 		menu_principal = "<ul class='nav'>"
 			menu.each do |item|
 				menu_principal << "<li>"
-					menu_principal << link_to(item.upcase, :controller => item.pluralize)
+					menu_principal << link_to(item.pluralize, :controller => item.pluralize)
 				menu_principal << "</li>"
 			end
 		menu_principal << "</ul>"

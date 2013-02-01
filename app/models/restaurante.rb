@@ -20,6 +20,31 @@ has_attached_file :foto, :styles => {:medium => "300x200", :thumb => "100x100"}
 
   validate :primeira_letra_maiuscula
 
+  #methods of instance
+  def nota_media    
+    nota_media = self.qualificacoes.average(:nota)
+  end
+
+  def valida_nota_media
+    if nota_media.nil?
+      0 
+    else
+      nota_media.round
+    end
+  end
+
+  def media_valor_gasto
+    media_valor_gasto = self.qualificacoes.average(:valor_gasto)
+  end
+
+  def valida_media_valor_gasto
+    if media_valor_gasto.nil?
+      0
+    else
+      media_valor_gasto.round(2)
+    end
+  end
+
   private
   def primeira_letra_maiuscula
   	errors.add(:nome,"primeira letra deve ser maiúscula") unless nome =~ /[A-Z].*/

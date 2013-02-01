@@ -44,12 +44,12 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to @comentario, notice: 'Comentario was successfully created.' }
-        format.json { render json: @comentario, status: :created, location: @comentario }
+        format.xml { render :xml => @comentario, :status => :created, :location => @comentario }
+        format.js 
       else
         format.html { render action: "new" }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
-        format.js   {head :ok}
+        format.js   { head :ok}
       end
     end
   end
