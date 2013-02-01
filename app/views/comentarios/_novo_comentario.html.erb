@@ -1,7 +1,8 @@
-<div id="novo_comentario">
-	<a href="#" onclick="$('#novo_comentario').children().toggle();">
+<a href="#" onclick="$('#novo_comentario').children().toggle();">
 		Novo Comentario
-	</a>
+</a>
+
+<div id="novo_comentario">
 	<div id="form_comentario" style="display:nome;">
 		<%=form_for Comentario.new, :remote => true do |f| %>
 			<%=hidden_field :comentario, :comentavel_id,   :value => comentavel.id %>

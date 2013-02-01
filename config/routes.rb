@@ -1,7 +1,6 @@
 VotaPrato::Application.routes.draw do
   resources :comentarios
 
-
 	#Resources
 	resources :clientes
 	resources :qualificacoes

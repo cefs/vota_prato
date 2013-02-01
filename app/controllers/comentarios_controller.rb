@@ -49,6 +49,7 @@ class ComentariosController < ApplicationController
       else
         format.html { render action: "new" }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
+        format.js   {head :ok}
       end
     end
   end
