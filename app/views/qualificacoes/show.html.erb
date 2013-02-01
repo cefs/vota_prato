@@ -3,16 +3,46 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
-  <dd><%= @qualificacao.cliente.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:restaurante_id) %>:</strong></dt>
-  <dd><%= @qualificacao.restaurante.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:nota) %>:</strong></dt>
-  <dd><%= @qualificacao.nota %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:valor_gasto) %>:</strong></dt>
-  <dd><%= valor_formatado @qualificacao.valor_gasto %></dd>
-</dl>
+  <div class="row">
+
+    <div class="span6">
+
+      <div class="well">
+          <div class="page-header">
+            <h4>
+              <%= @qualificacao.cliente.nome %>
+                <small> avaliou o restaurante </small>
+              <%= @qualificacao.restaurante.nome %>
+            </h4>
+          </div>
+      </div>
+
+    </div>
+
+    <div class="span6">
+
+      <div class="span3">
+        <div class="well">
+          <small>com a nota:</small>
+          <b><%= @qualificacao.nota.round %></b>
+        </div>
+      </div>
+
+      <div class="span3">
+        <div class="well">
+          <small>com gastos de:</small>
+          <b><%= valor_formatado @qualificacao.valor_gasto.round %></b>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<% unless @qualificacao.comentarios.empty? %>
+  <%= comentarios @qualificacao %>
+<% end %>
+
+<%= novo_comentario @qualificacao %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
