@@ -1,33 +1,15 @@
 <%- model_class = Qualificacao -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>Lista de Qualificações <%= link_to 'Nova qualificação', new_qualificacao_path, :class => 'btn btn-primary' %></h1>
 </div>
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:cliente_id) %></th>
-      <th><%= model_class.human_attribute_name(:restaurante_id) %></th>
-
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
   <tbody>
     <% @qualificacoes.each do |qualificacao| %>
       <tr>
-        <td><%= qualificacao.cliente.nome %></td>
-        <td><%= qualificacao.restaurante.nome %></td>
-
-        <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      qualificacao_path(qualificacao), :class => 'btn btn-mini' %>
-        </td>
+        <td><%= link_to "#{qualificacao.cliente.nome} qualificou o restaurante #{qualificacao.restaurante.nome}", qualificacao_path(qualificacao) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%=paginate @qualificacoes %>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_qualificacao_path,
-            :class => 'btn btn-primary' %>

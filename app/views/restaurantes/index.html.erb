@@ -1,35 +1,18 @@
 <%- model_class = Restaurante -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:nome) %></th>
-      <th><%= model_class.human_attribute_name(:endereco) %></th>
-      <th><%= model_class.human_attribute_name(:especialidade) %></th>
+  <h1>Lista de Restaurantes <%= link_to 'Novo restaurante', new_restaurante_path, :class => 'btn btn-primary' %></h1>
 
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
+  <%=  "Não há restaurantes cadastrados " if @restaurantes.empty? %>
+
+</div>
+<table class="table table-striped">  
   <tbody>
     <% @restaurantes.each do |restaurante| %>
       <tr>
-        <td><%= link_to restaurante.nome, restaurante_path(restaurante) %></td>  
-        <td><%= restaurante.endereco %></td>
-        <td><%= restaurante.especialidade %></td>
-
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_restaurante_path(restaurante), :class => 'btn btn-mini' %>          
-        </td>
+        <td><%= link_to restaurante.nome, restaurante_path(restaurante) %></td>    
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%=paginate @restaurantes %>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_restaurante_path,
-            :class => 'btn btn-primary' %>

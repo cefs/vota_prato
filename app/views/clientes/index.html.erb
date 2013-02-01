@@ -1,19 +1,24 @@
 <%- model_class = Cliente -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>Lista de Clientes <%= link_to 'Novo cliente', new_cliente_path, :class => 'btn btn-primary' %></h1>
+
+  <%=  "Não há clientes cadastrados " if @clientes.empty? %>
+
 </div>
 <table class="table table-striped">
   <tbody>
+
+
     <% @clientes.each do |cliente| %>
       <tr>
         <td><%= link_to cliente.nome, cliente_path(cliente) %></td>
       </tr>
     <% end %>
+
+
   </tbody>
 </table>
 
 <%=paginate @clientes %>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_cliente_path,
-            :class => 'btn btn-primary' %>
+
