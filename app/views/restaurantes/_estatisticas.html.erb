@@ -1,0 +1,14 @@
+	<p>
+		<b>Nota Média:</b>
+		<%=@restaurante.qualificacoes.average(:nota) %><br />
+	</p>
+
+	<p>
+		<b>Qualificações:</b>
+		<%=@restaurante.qualificacoes.count %><br />
+	</p>
+
+	<p>
+		<b>Preço médio:</b>
+		<%=  valor_formatado(@restaurante.qualificacoes.average(:valor_gasto)) %><br />
+	</p>
