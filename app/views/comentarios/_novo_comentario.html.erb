@@ -1,24 +1,27 @@
-<a href="#" onclick="$('#novo_comentario').children().toggle();">
-		Novo Comentario
-</a>
-
 <div id="novo_comentario">
-	<div id="form_comentario" style="display:nome;">
-		<%=form_for Comentario.new, :remote => true do |f| %>
+
+	<a href="#" onclick="$('#novo_comentario').children().toggle();" class="btn">
+		Novo Comentário
+	</a>
+
+	<div id="form_comentario" style="display:none;">
+		<%=form_for Comentario.new, :html => { :class => 'form-horizontal' },:remote => true do |f| %>
 			<%=hidden_field :comentario, :comentavel_id,   :value => comentavel.id %>
 			<%=hidden_field :comentario, :comentavel_type, :value => comentavel.class %>
 
-			<div class="field">
-				<%= f.label :conteudo %><br />
-				<%= f.text_area :conteudo %>
+			<div class="control-group">
+				<div class="controls">
+					<%= f.text_area :conteudo, :size =>"70x5", :class => 'text_area' %>
+				</div>
 			</div>
 
-			<div class="actions">
-				<%=f.submit %>
-				<a href="#" onclick="$('#novo_comentario').children().toggle();">
+			<div class="form-actions">
+			    <%= f.submit nil, :class => 'btn btn-primary' %>
+
+	            <a href="#" onclick="$('#novo_comentario').children().toggle();" class="btn">
 					Cancelar
 				</a>
-			</div>
+  			</div>
 		<% end %>
 	</div>
 </div>

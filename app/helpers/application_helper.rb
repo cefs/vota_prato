@@ -7,7 +7,7 @@ module ApplicationHelper
 	end
 
 	def comentarios(comentavel)
-		comentarios = "<div id='comentarios'>"
+		comentarios = "<div id='comentarios' class='well'>"
 			comentarios << "<h3>Comentarios</h3>"
 			comentarios << render(comentavel.comentarios) unless comentavel.comentarios.empty?
 		comentarios << "</div>"
@@ -19,11 +19,11 @@ module ApplicationHelper
 	end
 
 	def menu_principal
-		menu = %w(cliente qualificacao restaurante comentario)
-		menu_principal = "<ul>"
+		menu = %w(cliente restaurante qualificacao )
+		menu_principal = "<ul class='nav'>"
 			menu.each do |item|
 				menu_principal << "<li>"
-					menu_principal << link_to(item, :controller => item.pluralize)
+					menu_principal << link_to(item.upcase, :controller => item.pluralize)
 				menu_principal << "</li>"
 			end
 		menu_principal << "</ul>"

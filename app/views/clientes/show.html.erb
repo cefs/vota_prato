@@ -1,20 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Cliente -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Nome:</b>
-  <%= @cliente.nome %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
+  <dd><%= @cliente.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:idade) %>:</strong></dt>
+  <dd><%= @cliente.idade %></dd>
+</dl>
 
-<p>
-  <b>Idade:</b>
-  <%= @cliente.idade %>
-</p>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              clientes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_cliente_path(@cliente), :class => 'btn' %>
+</div>
 
 
-<%= link_to 'Nova Qualificação', :controller => "qualificacoes",
-								 :action => "new",
-								 :cliente => @cliente %>
-
-
-<%= link_to 'Edit', edit_cliente_path(@cliente) %> |
-<%= link_to 'Back', clientes_path %>
+<div class="btn">
+  <%= link_to 'Nova Qualificação', :controller => "qualificacoes",
+  :action => "new",
+  :cliente => @cliente
+  %>
+</div>

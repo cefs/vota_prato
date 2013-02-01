@@ -1,38 +1,36 @@
-<% if @restaurante.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restaurante.errors.count, "error") %> prohibited this restaurante from being saved:</h2>
+<%= form_for @restaurante, :html => { :class => 'form-horizontal' } do |f| %>
 
-      <ul>
-      <% @restaurante.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-
-      </ul>
+  <div class="control-group">
+    <%= f.label :foto, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :foto, :class => 'text_field' %>
     </div>
-<% end %>
-
-
-<%#= form_for :@restaurante, :html =>{ :multipart=>true } do |f| %>
-
-<%= form_for(@restaurante, :html => {:multipart=> true}) do |f| %>
-  <div class="field">
-    <%= f.label :foto %><br />
-    <%= f.file_field :foto %>
   </div>
 
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
+
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :endereco %><br />
-    <%= f.text_field :endereco %>
+
+  <div class="control-group">
+    <%= f.label :endereco, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :endereco, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :especialidade %><br />
-    <%= f.text_field :especialidade %>
+  <div class="control-group">
+    <%= f.label :especialidade, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :especialidade, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit 'Enviar' %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                restaurantes_path, :class => 'btn' %>
   </div>
 <% end %>

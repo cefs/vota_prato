@@ -1,24 +1,19 @@
-<h1>Listing clientes</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Idade</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @clientes.each do |cliente| %>
-  <tr>
-    <td><%= cliente.nome %></td>
-    <td><%= cliente.idade %></td>
-    <td><%= link_to 'Show', cliente %></td>
-    <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
-  </tr>
-<% end %>
+<%- model_class = Cliente -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <tbody>
+    <% @clientes.each do |cliente| %>
+      <tr>
+        <td><%= link_to cliente.nome, cliente_path(cliente) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
+<%=paginate @clientes %>
 
-<%= link_to 'New Cliente', new_cliente_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_cliente_path,
+            :class => 'btn btn-primary' %>

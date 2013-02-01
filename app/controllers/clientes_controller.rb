@@ -3,7 +3,7 @@ class ClientesController < ApplicationController
   respond_to :html, :xml
 
   def index
-    @clientes = Cliente.all
+    @clientes = Cliente.order(:nome).page(params[:page]).per(5)
     respond_with @clientes
   end
 

@@ -1,7 +1,7 @@
 #encoding: utf-8
 class Restaurante < ActiveRecord::Base
 #paperclip
-has_attached_file :foto, :styles => {:medium => "300x300", :thumb => "100x100"}
+has_attached_file :foto, :styles => {:medium => "300x200", :thumb => "100x100"}
 
 #associations  
       has_many :qualificacoes

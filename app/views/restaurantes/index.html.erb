@@ -1,28 +1,35 @@
-<%=render "titulo" %>
+<%- model_class = Restaurante -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:endereco) %></th>
+      <th><%= model_class.human_attribute_name(:especialidade) %></th>
 
-<h1>Listing restaurantes</h1>
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Endereco</th>
-    <th>Especialidade</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurantes.each do |restaurante| %>
+      <tr>
+        <td><%= link_to restaurante.nome, restaurante_path(restaurante) %></td>  
+        <td><%= restaurante.endereco %></td>
+        <td><%= restaurante.especialidade %></td>
 
-<% @restaurantes.each do |restaurante| %>
-  <tr>
-    <td><%= restaurante.nome %></td>
-    <td><%= restaurante.endereco %></td>
-    <td><%= restaurante.especialidade %></td>
-    <td><%= link_to 'Show', restaurante %></td>
-    <td><%= link_to 'Edit', edit_restaurante_path(restaurante) %></td>
-  </tr>
-<% end %>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_restaurante_path(restaurante), :class => 'btn btn-mini' %>          
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <%=paginate @restaurantes %>
 
-<br />
-<%= link_to 'New Restaurante', new_restaurante_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_restaurante_path,
+            :class => 'btn btn-primary' %>

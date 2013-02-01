@@ -1,38 +1,46 @@
-<%=render "titulo" %>
+<%- model_class = Restaurante -%>
+<div class="page-header">
+<h1><%#=t '.title', :default => model_class.model_name.human %></h1>
 
-<%=render "restaurantes/estatisticas" %>
+<div class="row">
+    <div class="span3">
+      <div class="well">
+        <%=image_tag @restaurante.foto.url(:medium), :class =>"img-rounded"%>
+      </div>
+    </div>
 
-<p id="notice"><%= notice %></p>
-<p>
-	<%=image_tag @restaurante.foto.url(:thumb) %>
-</p>
+    <div class="span6">
+      <div class="well">
+          <table class="table table-hover">
+            <tr><td>Restaurante:</td><td><%=@restaurante.nome%></td></tr>
+            <tr><td>Endereço:</td><td><%=@restaurante.endereco%></td></tr>
+            <tr><td>Especialidade:</td><td><%=@restaurante.especialidade%></td></tr>
+          </table>
 
-<p>
-  <b>Nome:</b>
-  <%= @restaurante.nome %>
-</p>
 
-<p>
-  <b>Endereco:</b>
-  <%= @restaurante.endereco %>
-</p>
+          <div class="btn">
+            <%= link_to 'Nova Qualificação', :controller => "qualificacoes",
+            :action => "new",
+            :restaurante => @restaurante %>
+          </div>
 
-<p>
-  <b>Especialidade:</b>
-  <%= @restaurante.especialidade %>
-</p>
+      </div>      
+    </div>
+</div>
+
+<%=render "estatisticas"%>
 
 <% unless @restaurante.comentarios.empty? %>
-	<%= comentarios @restaurante %>	
+  <%= comentarios @restaurante %>
 <% end %>
+
 
 <%= novo_comentario(@restaurante)%>
 
 
-<%= link_to 'Nova Qualificação', :controller => "qualificacoes",
-								 :action => "new",
-								 :restaurante => @restaurante %>
-
-
-<%= link_to 'Edit', edit_restaurante_path(@restaurante) %> |
-<%= link_to 'Back', restaurantes_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              restaurantes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_restaurante_path(@restaurante), :class => 'btn' %>
+</div>

@@ -1,14 +1,29 @@
-	<p>
-		<b>Nota Média:</b>
-		<%=@restaurante.qualificacoes.average(:nota) %><br />
-	</p>
+<div class="row">
+    <div class="span3">
+      <div class="well">
+      	<b>Nota Média:</b>
+      	<span class="label">
+			     <%=@restaurante.qualificacoes.average(:nota) %>
+		    </span>
+      </div>
+    </div>
 
-	<p>
-		<b>Qualificações:</b>
-		<%=@restaurante.qualificacoes.count %><br />
-	</p>
+    <div class="span3">
+      <div class="well">
+      	<b>Qualificações:</b>
+        <span class="label">
+        <%=@restaurante.qualificacoes.count %>
+        </span>
+      </div>  
+    </div>
 
-	<p>
-		<b>Preço médio:</b>
-		<%=  valor_formatado(@restaurante.qualificacoes.average(:valor_gasto)) %><br />
-	</p>
+    <div class="span3">
+      <div class="well">
+      	 <b>Preço médio:</b>
+          <span class="label">
+            <%=  valor_formatado(@restaurante.qualificacoes.average(:valor_gasto)) %>
+          </span>
+      </div>
+    </div>
+
+</div>
