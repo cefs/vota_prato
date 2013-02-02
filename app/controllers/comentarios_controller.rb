@@ -2,7 +2,7 @@ class ComentariosController < ApplicationController
   # GET /comentarios
   # GET /comentarios.json
   def index
-    @comentarios = Comentario.all
+    @comentarios = Comentario.all.page(params[:page]).per(3)
 
     respond_to do |format|
       format.html # index.html.erb

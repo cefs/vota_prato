@@ -1,4 +1,8 @@
-<%= form_for @cliente, :html => { :class => 'form-horizontal' } do |f| %>
+<div id="notice">
+
+</div>
+
+<%= form_for @cliente, :remote => true, :html => {  :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :nome, :class => 'control-label' %>
     <div class="controls">
@@ -18,3 +22,16 @@
                 clientes_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<% content_for :js do %>
+  $("#new_cliente").bind("ajax:complete",function(xhr, result){
+
+    if(result.status == 400){
+      $("#notice").html(result.responseText);
+    }else{
+      $("#notice").html("Cadastrado com sucesso!");
+      $("#new_cliente")[0].reset();
+    }
+  });
+<% end %>
+

@@ -1,0 +1,10 @@
+<script>
+	var erros = "";
+	<% @cliente.errors.full_messages.each do |m| %>
+		erros += " :: <%= m %>";
+	<% end %>
+
+	if (erros != "") {
+		alert(erros);	
+	}
+</script>
